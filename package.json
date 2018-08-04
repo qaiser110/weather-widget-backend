@@ -6,7 +6,8 @@
   "license": "ISC",
   "main": "src/server.js",
   "scripts": {
-    "test": "jest --no-cache",
+    "start": "node .",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "jest": {
