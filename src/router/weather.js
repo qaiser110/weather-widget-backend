@@ -16,7 +16,7 @@ require('dotenv').config();
 const appId = process.env.WEATHERMAP_APPID;
 if (!appId) throw new Error('Please make sure you have the WEATHERMAP_APPID defined in .env file. If you do not have one, you can get it here: https://openweathermap.org/appid')
 
-const forecastUrl = 'http://api.openweathermap.org/data/2.5/forecast/daily';
+const forecastUrl = `http://api.openweathermap.org/data/2.5/forecast/daily?units=metric&appid=${appId}`;
 
 router.get('/forecast/:cityId', async (req, res, next) => {
 
@@ -39,7 +39,7 @@ router.get('/forecast/:cityId', async (req, res, next) => {
       msg: 'City not found for the given ID'
     })
 
-    const { data } = await axios.get(`${forecastUrl}?id=${city.id}&appid=${appId}`)
+    const { data } = await axios.get(`${forecastUrl}&id=${city.id}`)
 
     data.city['countryName'] = countryJson[city.country]
 
